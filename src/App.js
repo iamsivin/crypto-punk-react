@@ -8,7 +8,6 @@ import Main from "./components/Main";
 function App() {
   const [punkListData, setPunkListData] = useState([]);
   const [selectedPunk, setselectedPunk] = useState(0);
-
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,23 +21,26 @@ function App() {
     };
     return fetchData();
   }, []);
+
   if (punkListData.length === 0) {
     return <div className="loading">Fetching data...</div>;
   }
-  return (
-    <div className="app">
-      <Header />
-      {punkListData?.length && (
-        <>
-          <Main selectedPunk={selectedPunk} punkListData={punkListData} />
-          <PunkList
-            punkListData={punkListData}
-            setselectedPunk={setselectedPunk}
-          />
-        </>
-      )}
-    </div>
-  );
+  if (punkListData.length > 0) {
+    return (
+      <div className="app">
+        <Header />
+        {punkListData?.length && (
+          <>
+            <Main selectedPunk={selectedPunk} punkListData={punkListData} />
+            <PunkList
+              punkListData={punkListData}
+              setselectedPunk={setselectedPunk}
+            />
+          </>
+        )}
+      </div>
+    );
+  }
 }
 
 export default App;
