@@ -26,7 +26,7 @@ function App() {
   return (
     <div className="app">
       <Header />
-      {punkListData?.length > 0 && (
+      {punkListData?.length && (
         <>
           <Main selectedPunk={selectedPunk} punkListData={punkListData} />
           <PunkList
