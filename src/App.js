@@ -11,10 +11,14 @@ function App() {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios.get(
-        "/assets?asset_contract_address=0xD8e6f1104925E9519f29de5A058BF906C5FBfeDA&order_direction=asc"
-      );
-      setPunkListData(result.data.assets);
+      try {
+        const result = await axios.get(
+          "/assets?asset_contract_address=0xD8e6f1104925E9519f29de5A058BF906C5FBfeDA&order_direction=asc"
+        );
+        setPunkListData(result.data.assets);
+      } catch (error) {
+        console.log(error);
+      }
     };
     return fetchData();
   }, []);
@@ -22,7 +26,7 @@ function App() {
   return (
     <div className="app">
       <Header />
-      {punkListData?.length > 0 && (
+      {punkListData.length > 0 && (
         <>
           <Main selectedPunk={selectedPunk} punkListData={punkListData} />
           <PunkList
