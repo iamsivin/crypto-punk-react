@@ -22,7 +22,9 @@ function App() {
     };
     return fetchData();
   }, []);
-
+  if (punkListData.length === 0) {
+    return <div className="loading">Fetching data...</div>;
+  }
   return (
     <div className="app">
       <Header />
