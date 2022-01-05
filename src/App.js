@@ -28,7 +28,7 @@ const App = () => {
     return (
       <div className="app">
         <Header />
-        {!!punkListData.length && (
+        {punkListData.length > 0 ? (
           <>
             <Main selectedPunk={selectedPunk} punkListData={punkListData} />
             <PunkList
@@ -36,7 +36,7 @@ const App = () => {
               setselectedPunk={setselectedPunk}
             />
           </>
-        )}
+        ) : null}
       </div>
     );
   }
