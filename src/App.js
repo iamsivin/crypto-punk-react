@@ -16,17 +16,16 @@ const App = () => {
         );
         setPunkListData(result.data.assets);
       } catch (error) {
-        console.log(error);
+        throw error;
       }
     };
     return fetchData();
   }, []);
-  const length = punkListData.length;
 
   return (
     <div className="app">
       <Header />
-      {length ? (
+      {Boolean(punkListData.length > 0) && (
         <>
           <Main selectedPunk={selectedPunk} punkListData={punkListData} />
           <PunkList
@@ -34,7 +33,7 @@ const App = () => {
             setselectedPunk={setselectedPunk}
           />
         </>
-      ) : null}
+      )}
     </div>
   );
 };
