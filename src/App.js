@@ -5,9 +5,9 @@ import axios from "axios";
 import PunkList from "./components/PunkList";
 import Main from "./components/Main";
 
-function App() {
-  const [punkListData, setPunkListData] = useState([]);
+const App = () => {
   const [selectedPunk, setselectedPunk] = useState(0);
+  const [punkListData, setPunkListData] = useState([]);
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -22,14 +22,13 @@ function App() {
     return fetchData();
   }, []);
 
-  if (punkListData.length === 0) {
+  if (!punkListData.length) {
     return <div className="loading">Fetching data...</div>;
-  }
-  if (punkListData.length > 0) {
+  } else {
     return (
       <div className="app">
         <Header />
-        {punkListData?.length && (
+        {!!punkListData.length && (
           <>
             <Main selectedPunk={selectedPunk} punkListData={punkListData} />
             <PunkList
@@ -41,6 +40,6 @@ function App() {
       </div>
     );
   }
-}
+};
 
 export default App;
