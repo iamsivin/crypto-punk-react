@@ -21,25 +21,22 @@ const App = () => {
     };
     return fetchData();
   }, []);
+  const length = punkListData.length;
 
-  if (!punkListData.length) {
-    return <div className="loading">Fetching data...</div>;
-  } else {
-    return (
-      <div className="app">
-        <Header />
-        {punkListData.length > 0 ? (
-          <>
-            <Main selectedPunk={selectedPunk} punkListData={punkListData} />
-            <PunkList
-              punkListData={punkListData}
-              setselectedPunk={setselectedPunk}
-            />
-          </>
-        ) : null}
-      </div>
-    );
-  }
+  return (
+    <div className="app">
+      <Header />
+      {length ? (
+        <>
+          <Main selectedPunk={selectedPunk} punkListData={punkListData} />
+          <PunkList
+            punkListData={punkListData}
+            setselectedPunk={setselectedPunk}
+          />
+        </>
+      ) : null}
+    </div>
+  );
 };
 
 export default App;
