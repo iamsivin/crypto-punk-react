@@ -6,9 +6,8 @@ const PunkList = ({ punkListData, setselectedPunk }) => {
   return (
     <div className="punkList">
       {punkListData.map((punk) => (
-        <div onClick={() => setselectedPunk(punk.token_id)}>
+        <div key={punk.token_id} onClick={() => setselectedPunk(punk.token_id)}>
           <CollectionCard
-            key={punk.token_id}
             id={punk.token_id}
             name={punk.name}
             traits={punk.traits}

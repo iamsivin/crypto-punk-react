@@ -25,7 +25,7 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      {Boolean(punkListData.length > 0) && (
+      {punkListData.length > 0 ? (
         <>
           <Main selectedPunk={selectedPunk} punkListData={punkListData} />
           <PunkList
@@ -33,6 +33,8 @@ const App = () => {
             setselectedPunk={setselectedPunk}
           />
         </>
+      ) : (
+        <div className="loading">Loading...</div>
       )}
     </div>
   );
