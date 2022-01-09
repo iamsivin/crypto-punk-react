@@ -25,7 +25,7 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      {punkListData.length > 0 ? (
+      {punkListData && punkListData.length && punkListData.length > 0 ? (
         <>
           <Main selectedPunk={selectedPunk} punkListData={punkListData} />
           <PunkList
