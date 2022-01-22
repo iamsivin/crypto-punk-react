@@ -22,14 +22,17 @@ const App = () => {
     return fetchData();
   }, []);
 
+  let itemsToRender;
+  itemsToRender = punkListData;
+
   return (
     <div className="app">
       <Header />
-      {punkListData && punkListData.length && punkListData.length > 0 ? (
+      {itemsToRender && itemsToRender.length > 0 ? (
         <>
-          <Main selectedPunk={selectedPunk} punkListData={punkListData} />
+          <Main selectedPunk={selectedPunk} punkListData={itemsToRender} />
           <PunkList
-            punkListData={punkListData}
+            punkListData={itemsToRender}
             setselectedPunk={setselectedPunk}
           />
         </>
