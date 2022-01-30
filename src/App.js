@@ -1,3 +1,4 @@
+import React from "react";
 import "./App.css";
 import Header from "./components/Header";
 import { useState, useEffect } from "react";
@@ -22,22 +23,19 @@ const App = () => {
     return fetchData();
   }, []);
 
-  let itemsToRender;
-  itemsToRender = punkListData;
-
   return (
     <div className="app">
       <Header />
-      {itemsToRender && itemsToRender.length > 0 ? (
-        <>
-          <Main selectedPunk={selectedPunk} punkListData={itemsToRender} />
-          <PunkList
-            punkListData={itemsToRender}
-            setselectedPunk={setselectedPunk}
-          />
-        </>
-      ) : (
-        <div className="loading">Loading...</div>
+      {React.Children.toArray(
+        punkListData && punkListData.length > 0 && (
+          <>
+            <Main selectedPunk={selectedPunk} punkListData={punkListData} />
+            <PunkList
+              punkListData={punkListData}
+              setselectedPunk={setselectedPunk}
+            />
+          </>
+        )
       )}
     </div>
   );
