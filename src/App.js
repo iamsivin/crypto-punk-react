@@ -26,16 +26,14 @@ const App = () => {
   return (
     <div className="app">
       <Header />
-      {React.Children.toArray(
-        punkListData && punkListData.length > 0 && (
-          <>
-            <Main selectedPunk={selectedPunk} punkListData={punkListData} />
-            <PunkList
-              punkListData={punkListData}
-              setselectedPunk={setselectedPunk}
-            />
-          </>
-        )
+      {punkListData && punkListData.length > 0 && (
+        <>
+          <Main selectedPunk={selectedPunk} punkListData={punkListData} />
+          <PunkList
+            punkListData={punkListData}
+            setselectedPunk={setselectedPunk}
+          />
+        </>
       )}
     </div>
   );
